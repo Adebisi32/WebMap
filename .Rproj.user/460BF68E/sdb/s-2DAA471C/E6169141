@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(\"googlesheets\")\nlibrary(\"leaflet\")\nlibrary(\"shiny\")\nlibrary(\"rgdal\")\nlibrary(\"raster\")\nlibrary('githubinstall')\nlibrary(devtools)\nlibrary(roxygen2)\n\nsheet<- gs_key('1hT9JHKGhKR1QcUDB8ylylURmgxoIkylLd4SF9zqdTVo')\nkebele<-shapefile(\"inst/extdata/kebeles.shp\")\ninstall_github(\"Adebisi32/WebMap\", build_vignettes = TRUE,  \n               auth_token = 'p0969e171e5c360c0f37ca7e00e028c07d78cc9a5')\n#adding columns\ncnames<- c(\"UniT\",\"HV_Homes\", \"HV_Wells\", \"HV_Pipedw\", \"HV_Floors\", \"HV_Roofs\", \"HV_Solar\", \"HV_Latrines\", \"HV_p\", \"HV_p1\", \"HV_p2\")\n\n#Creating School points\nSchoolpoints<- sheet %>% gs_read(ws = 1, range = \"A1:D8\")\n\n#Adding data to shapefile\nUniT<- sheet %>% gs_read(ws = 2, range = \"A1:B34\")\nUniT<- as.data.frame(UniT)\nkebele$UniT<-UniT\nplot(kebele)\n\nHV<- sheet %>% gs_read(ws = 3, range = \"A1:I34\")\nHV<- as.data.frame(HV)\nkebele<-merge(kebele@data,HV)\nhead(kebele)\nclass(kebele)\nEconOpp<- sheet %>% gs_read(ws = 4, range = \"A1:D8\")\n\n\n\nm <- leaflet() %>%\n  addTiles('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png') %>%\n  setView(36.776, 11.242, zoom = 8)\n \nm\n",
+    "created" : 1522788917600.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3761365327",
+    "id" : "E6169141",
+    "lastKnownWriteTime" : 1522857781,
+    "last_content_update" : 1523283290465,
+    "path" : "~/R/WEbMapping/WebMap/R/Mapscript.R",
+    "project_path" : "R/Mapscript.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
