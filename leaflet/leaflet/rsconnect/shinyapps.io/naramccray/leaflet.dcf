@@ -1,0 +1,12 @@
+name: leaflet
+title:
+username:
+account: naramccray
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 329997
+bundleId: 1345957
+url: https://naramccray.shinyapps.io/leaflet/
+when: 1525025982.61311
+asMultiple: FALSE
+asStatic: FALSE
